@@ -79,7 +79,8 @@ test:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
 production:
-  <<: *default
-  database: todo_production
-  username: todo
-  password: <%= ENV['TODO_DATABASE_PASSWORD'] %>
+  database: d9hrqud659fsbo
+  username: vfzkvpryfjmelh
+  password: c8a141a18f422571d4efe9267cdc4a6bdb02c0fa7e383ade77fe63ef07ca7fb2
+  host: ec2-54-197-249-140.compute-1.amazonaws.com
+  dialect: postgres
