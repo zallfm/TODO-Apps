@@ -15,7 +15,7 @@ This application was generated with the Ruby On Rails and PostgresSQL
 
 # Run Localhost
   
-    * git clone git@github.com:rhizalfahmi/todo.git | Clone this repo with ssh
+    * git clone git@github.com:zallfm/todo.git | Clone this repo with ssh
     * bundle install | Install gem
     * rake db:create | Create database
     * rake db:migrate | Create migration
@@ -28,4 +28,4 @@ This application was generated with the Ruby On Rails and PostgresSQL
 
 
 # Author
-for more Rails [Maverick](https://github.com/rhizalfahmi/)
+for more Rails [Maverick](https://github.com/zallfm/)})
