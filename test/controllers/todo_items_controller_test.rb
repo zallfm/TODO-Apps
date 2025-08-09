@@ -12,6 +12,12 @@ class TodoItemsControllerTest < ActionDispatch::IntegrationTest
     end
   end
 
+  test 'create requires content param' do
+    assert_raises(ActionController::ParameterMissing) do
+      post todo_list_todo_items_path(@todo_list), params: { todo_item: {} }
+    end
+  end
+
   test 'create with blank content renders errors' do
     assert_no_difference('TodoItem.count') do
       post todo_list_todo_items_path(@todo_list), params: { todo_item: { content: '' } }
@@ -26,12 +32,10 @@ class TodoItemsControllerTest < ActionDispatch::IntegrationTest
     end
   end
 
-  test 'update requires content' do
-    original = @todo_item.content
-    patch todo_list_todo_item_path(@todo_list, @todo_item), params: { todo_item: {} }
-    assert_response :unprocessable_entity
-    assert_select '#error_explanation'
-    assert_equal original, @todo_item.reload.content
+  test 'update requires content param' do
+    assert_raises(ActionController::ParameterMissing) do
+      patch todo_list_todo_item_path(@todo_list, @todo_item), params: { todo_item: {} }
+    end
   end
 
   test 'update with valid content changes item and redirects' do
