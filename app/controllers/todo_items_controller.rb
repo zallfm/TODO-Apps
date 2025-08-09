@@ -7,6 +7,14 @@ class TodoItemsController < ApplicationController
     redirect_to @todo_list
   end
 
+  def update
+    if @todo_item.update(todo_item_params)
+      redirect_to @todo_list
+    else
+      redirect_to @todo_list, alert: "Todo item couldn't be updated."
+    end
+  end
+
   def destroy
     @todo_item = @todo_list.todo_items.find(params[:id])
     if @todo_item.destroy
@@ -33,6 +41,6 @@ class TodoItemsController < ApplicationController
   end
 
   def todo_item_params
-    params[:todo_item].permit(:content)
+    params.require(:todo_item).permit(:content)
   end
 end
