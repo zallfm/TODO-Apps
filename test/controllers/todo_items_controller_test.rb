@@ -12,10 +12,12 @@ class TodoItemsControllerTest < ActionDispatch::IntegrationTest
     end
   end
 
-  test 'create requires content' do
+  test 'create with blank content renders errors' do
     assert_no_difference('TodoItem.count') do
-      post todo_list_todo_items_path(@todo_list), params: { todo_item: {} }
+      post todo_list_todo_items_path(@todo_list), params: { todo_item: { content: '' } }
     end
+    assert_response :unprocessable_entity
+    assert_select '#error_explanation'
   end
 
   test 'update requires todo_item param' do
